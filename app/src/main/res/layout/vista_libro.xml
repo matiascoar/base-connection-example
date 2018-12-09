@@ -21,4 +21,9 @@
         android:layout_marginTop="15dp"
         android:layout_below="@+id/textName"/>
 
+    <ImageView
+        android:id="@+id/textImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </RelativeLayout>

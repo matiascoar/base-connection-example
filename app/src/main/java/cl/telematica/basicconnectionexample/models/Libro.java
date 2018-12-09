@@ -14,6 +14,7 @@ public class Libro {
     private String editorial;
     private String genero;
     private int autor;
+    private String picture;
 
     public void setId(int id){
         this.id = id;
@@ -55,6 +56,14 @@ public class Libro {
         this.autor = autor;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
     public static List<Libro> getLibros(String result) {
         List<Libro> lista = new ArrayList<>();
 
@@ -71,6 +80,7 @@ public class Libro {
                 libro.setEditorial(obj.getString("editorial"));
                 libro.setGenero(obj.getString("genero"));
                 libro.setAutor(obj.getInt("autor"));
+                libro.setPicture(obj.getString("photo"));
 
                 lista.add(libro);
             }
