@@ -14,9 +14,15 @@ import java.util.List;
 import cl.telematica.basicconnectionexample.R;
 import cl.telematica.basicconnectionexample.models.Libro;
 
+
+
 public class UIAdapter extends RecyclerView.Adapter<UIAdapter.ViewHolder> {
 
     private List<Libro> mDataset;
+
+    public UIAdapter(List<Libro> mDataset) {
+        this.mDataset = mDataset;
+    }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView mTextView;
@@ -26,16 +32,13 @@ public class UIAdapter extends RecyclerView.Adapter<UIAdapter.ViewHolder> {
             super(v);
             mTextView = (TextView) v.findViewById(R.id.textName);
             mGeneroView = (TextView) v.findViewById(R.id.textGenero);
-            mImageView = (ImageView) v.findViewById(R.id.textImage);
+            mImageView = (ImageView) v.findViewById(R.id.image);
         }
     }
 
-    public UIAdapter(List<Libro> myDataset) {
-        mDataset = myDataset;
-    }
-
     @Override
-    public UIAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public UIAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                   int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.vista_libro, parent, false);
         return new ViewHolder(v);
@@ -47,7 +50,10 @@ public class UIAdapter extends RecyclerView.Adapter<UIAdapter.ViewHolder> {
 
         holder.mTextView.setText(libro.getNombre());
         holder.mGeneroView.setText(libro.getGenero());
-        Glide.with(holder.mImageView.getContext()).load(libro.getPicture()).into(holder.mImageView);
+        Glide
+                .with(holder.mImageView.getContext())
+                .load(libro.getPhoto())
+                .into(holder.mImageView);
     }
 
     @Override
